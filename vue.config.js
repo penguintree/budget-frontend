@@ -9,7 +9,8 @@ module.exports = {
         alias: {
            blocks: path.join(__dirname, './src/blocks'),
            components: path.join(__dirname, './src/components'),
-           dataServices: path.join(__dirname, './src/dataServices')
+           dataServices: path.join(__dirname, './src/dataServices'),
+           store: path.join(__dirname, './src/store')
         }
      }
   }

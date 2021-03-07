@@ -6,9 +6,14 @@ const config = {
 };
 const backend = axios.create(config);
 
+backend.interceptors.request.use(requestInterceptor);
 backend.interceptors.response.use(responseInterceptorSuccess, responseInterceptorError)
 
 export default backend;
+
+function requestInterceptor(config) {
+   return config;
+}
 
 function responseInterceptorSuccess(response) {
    return response.data;

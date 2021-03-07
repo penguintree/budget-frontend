@@ -1,4 +1,4 @@
-import UniqueAsync from './uniqueAsync';
+import UniqueAsync from './UniqueAsync';
 
 const intervalleNettoyage = 60000; // Vidange du cache aux minutes.
 
