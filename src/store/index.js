@@ -41,6 +41,10 @@ const store = new Vuex.Store({
          const enveloppe = await enveloppeDataService.post(model);
          commit('enveloppes', { enveloppes: [enveloppe] });
       },
+      async deleteEnveloppe({ commit }, idEnveloppe) {
+         await enveloppeDataService.delete(idEnveloppe);
+         commit('removeEneveloppe', { idEnveloppe });
+      },
       async loadCategories({ commit, state }, idEnveloppe) {
          await unique.get(`loadCagegories-${idEnveloppe};`, async () => {
             if (state.categories.idEnveloppe !== idEnveloppe) {
@@ -48,18 +52,46 @@ const store = new Vuex.Store({
                commit('categories', { idEnveloppe, categories });
             }
          });
+      },
+      async updateOrInsertCategory({ commit }, { idEnveloppe, category }) {
+         const insert = !category.id;
+
+         if(insert){
+            category = await categoryDataService.post(idEnveloppe, category);
+         } else {
+            await categoryDataService.put(idEnveloppe, category.id, category);
+         }
+
+         commit('categories', { idEnveloppe, categories: [ category ] });
       }
    },
    mutations: {
       enveloppes(state, { enveloppes }) {
          state.enveloppes.push(...enveloppes);
       },
+      removeEneveloppe(state, { idEnveloppe }) {
+         const index = state.enveloppes.findIndex(e => e.id === idEnveloppe);
+         if(index >= 0) {
+            state.enveloppes.splice(index, 1);
+         }
+      },
       categories(state, { idEnveloppe, categories }) {
          if (state.categories.idEnveloppe !== idEnveloppe) {
             state.categories.idEnveloppe = idEnveloppe;
             state.categories.data = [];
          }
-         state.categories.data.push(...categories);
+         if (state.categories.data.length === 0) {
+            state.categories.data.push(...categories);
+         } else {
+            for(let updated of categories) {
+               const index = state.categories.data.findIndex(c => c.id === updated.id);
+               if (index >= 0) {
+                  state.categories.data.splice(index, 1, updated);
+               } else {
+                  state.categories.data.push(updated);
+               }
+            }
+         }
       }
    }
 });

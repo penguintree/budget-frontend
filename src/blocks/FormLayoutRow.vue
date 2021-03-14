@@ -1,7 +1,9 @@
 <template>
-   <v-col cols="12" sm="6" md="4">
-      <slot />
-   </v-col>
+   <v-row>
+      <v-col>
+         <slot />
+      </v-col>
+   </v-row>
 </template>
 <script>
 export default {

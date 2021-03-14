@@ -1,9 +1,13 @@
 <template>
-   <CategoryList :idEnveloppe="idEnveloppe" />
+   <div>
+      <CategoryList :idEnveloppe="idEnveloppe" />
+      <EnveloppeDeleteForm :idEnveloppe="idEnveloppe" />
+   </div>
 </template>
 <script>
 
 import CategoryList from 'components/CategoryList';
+import EnveloppeDeleteForm from 'components/EnveloppeDeleteForm';
 
 export default {
    props: {
@@ -13,7 +17,8 @@ export default {
       }
    },
    components: {
-      CategoryList
+      CategoryList,
+      EnveloppeDeleteForm
    }
 }
 </script>

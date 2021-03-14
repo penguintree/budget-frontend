@@ -1,12 +1,10 @@
 <template>
-   <v-card>
+   <v-card >
       <v-card-title>
          <span class="headline"><slot name="title" /></span>
       </v-card-title>
       <v-card-text>
-         <v-row>
-            <slot />
-         </v-row>
+         <slot />
       </v-card-text>
       <v-card-actions>
          <v-spacer></v-spacer>

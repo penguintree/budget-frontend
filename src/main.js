@@ -8,12 +8,16 @@ import CompositionApi from '@vue/composition-api';
 
 import FormLayout from 'blocks/FormLayout';
 import FormLayoutRow from 'blocks/FormLayoutRow';
+import DisplayEdit from 'blocks/DisplayEdit';
+import FormLayoutRowString from 'blocks/FormLayoutRowString';
 
 Vue.config.productionTip = false;
 Vue.use(CompositionApi);
 
 Vue.component('FormLayout', FormLayout);
 Vue.component('FormLayoutRow', FormLayoutRow);
+Vue.component('DisplayEdit', DisplayEdit);
+Vue.component('FormLayoutRowString', FormLayoutRowString)
 
 new Vue({
    router,

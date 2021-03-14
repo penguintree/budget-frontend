@@ -2,7 +2,8 @@ import backend from './backend';
 
 export default {
    getAll,
-   post
+   post,
+   delete: $delete
 };
 
 async function getAll(){
@@ -15,4 +16,9 @@ async function post(model) {
    const url = '/enveloppes';
    const created = await backend.post(url, model);
    return created;
+}
+
+async function $delete(idEnveloppe) {
+   const url = `/enveloppes/${idEnveloppe}`;
+   await backend.delete(url);
 }
