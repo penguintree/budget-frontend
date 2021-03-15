@@ -7,9 +7,12 @@
       <v-col cols="3">
          <template v-if="editMode">
             <v-btn fab small @click="toggle"><v-icon>mdi-check</v-icon></v-btn>
-            <v-btn fab small @click="cancel"><v-icon>mdi-cancel</v-icon></v-btn>
+            <v-btn fab small @click="$emit('cancel')"><v-icon>mdi-cancel</v-icon></v-btn>
          </template>
-         <v-btn v-else fab small @click="toggle"><v-icon>mdi-pencil</v-icon></v-btn>
+         <template v-else>
+            <v-btn fab small @click="toggle"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn fab small @click="$emit('delete')"><v-icon>mdi-delete</v-icon></v-btn>
+         </template>
       </v-col>
    </v-row>
 </template>
@@ -35,15 +38,11 @@ export default {
       const editMode = computed(() => props.value);
       const toggle = function(){
          emit('input', !editMode.value)
-      }
-      const cancel = function(){
-         emit('cancel');
-      }
+      };
 
       return {
          editMode,
-         toggle,
-         cancel
+         toggle
       };
    }
 }

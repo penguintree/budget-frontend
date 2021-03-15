@@ -3,6 +3,7 @@
       :value="editMode"
       @input="editModeChange"
       @cancel="cancel"
+      @delete="onDelete"
    >
       <template #display>{{ model }}</template>
       <template #edit>
@@ -43,6 +44,10 @@ export default {
       saveAsync: {
          type: Function,
          required: true
+      },
+      deleteAsync: {
+         type: Function,
+         required: true
       }
    },
    setup(props, { emit }) {
@@ -61,6 +66,10 @@ export default {
          editMode.value = false;
          emit('cancel');
       };
+
+      const onDelete = async() => {
+         await props.deleteAsync();
+      }
 
       const editModeChange = async (newValue) => {
          if (newValue) {
@@ -88,7 +97,8 @@ export default {
          model,
          rules,
          editModeChange,
-         cancel
+         cancel,
+         onDelete
       };
    }
 }

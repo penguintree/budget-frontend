@@ -5,6 +5,7 @@
       required
       :defaultToEditMode="startInEditMode" 
       :saveAsync="saveCategory"
+      :deleteAsync="deleteCategory"
       @cancel="$emit('cancel')" />
 </template>
 <script>
@@ -33,8 +34,13 @@ export default {
          emit('saved');
       };
 
+      const deleteCategory = async () => {
+         await store.dispatch('deleteCategory', { idEnveloppe: props.idEnveloppe, idCategory: props.category.id });
+      };
+
       return {
-         saveCategory
+         saveCategory,
+         deleteCategory
       };
    }
 };

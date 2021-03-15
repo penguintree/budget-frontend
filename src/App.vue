@@ -14,14 +14,14 @@
    </MainLayout>
 </template>
 <script>
-import MainLayout from 'blocks/MainLayout';
+// import MainLayout from 'blocks/MainLayout';
 import AppMenu from 'components/AppMenu';
 import EnveloppeAddForm from 'components/EnveloppeAddForm';
 
 export default {
    name: "App",
    components: {
-      MainLayout,
+      // MainLayout,
       AppMenu,
       EnveloppeAddForm
    },

@@ -1,0 +1,15 @@
+{
+   "include": [
+      "./src/**/*"
+   ],
+   "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+         "blocks": ["src/blocks"],
+         "components": ["src/components"],
+         "composables": ["src/composables"],
+         "dataServices": ["src/dataServices"],
+         "store": ["src/store"]
+      }
+   }
+}

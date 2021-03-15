@@ -5,19 +5,14 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@mdi/font/css/materialdesignicons.css';
 import CompositionApi from '@vue/composition-api';
-
-import FormLayout from 'blocks/FormLayout';
-import FormLayoutRow from 'blocks/FormLayoutRow';
-import DisplayEdit from 'blocks/DisplayEdit';
-import FormLayoutRowString from 'blocks/FormLayoutRowString';
+import globals from './globalComponents';
 
 Vue.config.productionTip = false;
 Vue.use(CompositionApi);
 
-Vue.component('FormLayout', FormLayout);
-Vue.component('FormLayoutRow', FormLayoutRow);
-Vue.component('DisplayEdit', DisplayEdit);
-Vue.component('FormLayoutRowString', FormLayoutRowString)
+for (let name in globals) {
+   Vue.component(name, globals[name]);
+}
 
 new Vue({
    router,

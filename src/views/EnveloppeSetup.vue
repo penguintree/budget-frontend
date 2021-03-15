@@ -1,13 +1,8 @@
 <template>
-   <div>
-      <CategoryList :idEnveloppe="idEnveloppe" />
-      <EnveloppeDeleteForm :idEnveloppe="idEnveloppe" />
-   </div>
+   <EnveloppeSetupForm :idEnveloppe="idEnveloppe" />
 </template>
 <script>
-
-import CategoryList from 'components/CategoryList';
-import EnveloppeDeleteForm from 'components/EnveloppeDeleteForm';
+import EnveloppeSetupForm from 'components/EnveloppeSetupForm';
 
 export default {
    props: {
@@ -17,8 +12,7 @@ export default {
       }
    },
    components: {
-      CategoryList,
-      EnveloppeDeleteForm
+      EnveloppeSetupForm
    }
 }
 </script>

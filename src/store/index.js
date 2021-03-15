@@ -63,6 +63,11 @@ const store = new Vuex.Store({
          }
 
          commit('categories', { idEnveloppe, categories: [ category ] });
+      },
+      async deleteCategory({ commit }, { idEnveloppe, idCategory }) {
+         await categoryDataService.delete(idEnveloppe, idCategory);
+
+         commit('removeCategory', { idEnveloppe, idCategory });
       }
    },
    mutations: {
@@ -91,6 +96,14 @@ const store = new Vuex.Store({
                   state.categories.data.push(updated);
                }
             }
+         }
+      },
+      removeCategory(state, { idEnveloppe, idCategory }) {
+         if(state.categories.idEnveloppe !== idEnveloppe) return;
+
+         const index = state.categories.data.findIndex(c => c.id === idCategory);
+         if(index >= 0) {
+            state.categories.data.splice(index, 1);
          }
       }
    }
